@@ -6,29 +6,29 @@ Modelo simplificado de atenticação através de [jwt](https://jwt.io/) utilizan
 
 ## Instalação
 
-1. Pacotes iniciais
+### Pacotes iniciais
 `laravel new laravel-jwt-auth`
 `composer require tymon/jwt-auth`
 
-2. Configurações básicas de instalação do jwt-auth
+### Configurações básicas de instalação do jwt-auth
 
 No arquivo _./config/app.php_:
 
-2.1. Providers
+#### Providers
 `'Tymon\JWTAuth\Providers\JWTAuthServiceProvider'`
 
-2.2. Aliases
+#### Aliases
 `'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth'`
 `'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory'`
 
-2.3. Rode os comandos
+#### Rode os comandos
 
 `php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\JWTAuthServiceProvider"`
 `php artisan jwt:generate`
 
 Ao gerar a chave de segurança do jwt, que fica armazenada no arquivo _./config/jwt.php_ sugerimos que seja colocado no arquivo _.env_.
 
-3. Rode a função do Laravel para criar as informações do usuário
+### Rode a função do Laravel para criar as informações do usuário
 
 `php artisan make:auth`
 
@@ -36,9 +36,12 @@ Crie um banco de dados para teste e configure o aquivo _.env_ e faça a migraç�
 
 `php artisan migrate`
 
-4. Configurações gerais do jwt-auth
 
-4.1. Crie o controller _AuthenticateController_:
+## Configurações
+
+### Configurações gerais do jwt-auth
+
+#### Crie o controller _AuthenticateController_:
 
 `php artisan make:controller AuthenticateController`
 
@@ -114,7 +117,7 @@ class AuthenticateController extends Controller
 
 ```
 
-4.2. Inclua o jwt-auth middleware
+#### Inclua o jwt-auth middleware
 
 No arquivo _./app/Http/Kernel.php_:
 
@@ -126,7 +129,7 @@ protected $routeMiddleware = [
 ];
 ```
 
-4.3. Atualize o _handler_ para exceções
+#### Atualize o _handler_ para exceções
 
 No arquivo _app/Exceptions/Handler.php_, função `render`:
 
@@ -140,7 +143,7 @@ if ($e instanceof Tymon\JWTAuth\Exceptions\TokenExpiredException) {
 return parent::render($request, $e);
 ```
 
-4.4. Atualize suas rotas para testar suas configurações
+#### Atualize suas rotas para testar suas configurações
 
 No arquivo _./app/Http/routes.php_ insira as rotas abaixo:
 
@@ -157,7 +160,9 @@ Route::group(['prefix' => 'api', 'middleware' => 'jwt.auth'], function()
 });
 ```
 
-5. Crie um usuário utilizando os formulários básicos do Laravel
+## Testes
+
+### Crie um usuário utilizando os formulários básicos do Laravel
 
 > http://localhost:8000/register
 
@@ -165,16 +170,16 @@ Exemplo:
 	- email: john.doe@domain.com
 	- senha: teste123
 
-6. Teste suas funções de criação de token com o [PostMan](http://www.getpostman.com/), sendo:
+### Teste suas funções de criação de token com o [PostMan](http://www.getpostman.com/), sendo:
 
-6.1. Busque o CSRF-TOKEN
+#### Busque o CSRF-TOKEN
 
 Como o Laravel possui uma camada de segurança utilizando token CSRF para sessões, será necessário buscar esse token para fazer nossa validação via jwt.
 
 - Acesse a página: _http://localhost:8000/login_, vá ao código fonte (Ctrl+U no Chrome).
 - Localize a palavra **token**, será um _input_ do tipo _hidden_, e copie seu valor (_value_); 
 
-6.2. Crie um token
+#### Crie um token
 
 - Método: POST
 - URL: http://localhost:8000/api/auth
@@ -185,7 +190,7 @@ Como o Laravel possui uma camada de segurança utilizando token CSRF para sessõ
 	- X-CSRF-TOKEN: **Aqui será colocado seu CSRF-TOKEN**(item 6.1)
 - Clique em _Send_, seu resultado será o seu token(jwt-token)!
 
-6.3. Teste a autenticação com o token
+#### Teste a autenticação com o token
 
 - Método: GET
 - URL: http://localhost:8000/getUser

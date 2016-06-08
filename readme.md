@@ -13,12 +13,13 @@ Modelo simplificado de atenticação através de [jwt](https://jwt.io/) utilizan
 2. Configurações básicas de instalação do jwt-auth
 
 No arquivo _./config/app.php_:
+
 2.1. Providers
-- 'Tymon\JWTAuth\Providers\JWTAuthServiceProvider'
+`'Tymon\JWTAuth\Providers\JWTAuthServiceProvider'`
 
 2.2. Aliases
-- 'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth'
-- 'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory'
+`'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth'`
+`'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory'`
 
 2.3. Rode os comandos
 

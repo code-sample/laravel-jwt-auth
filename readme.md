@@ -8,6 +8,7 @@ Modelo simplificado de atenticação através de [jwt](https://jwt.io/) utilizan
 
 ### Pacotes iniciais
 `laravel new laravel-jwt-auth`
+
 `composer require tymon/jwt-auth`
 
 ### Configurações básicas de instalação do jwt-auth

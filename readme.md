@@ -198,7 +198,7 @@ Verá que está validando! Teste retirar o token e veja que causará uma exceç�
 
 Verifique as rotas dentro do _middleware_ group e verá que funciona.
 
-Modelos utilizados no PostMan (Collections) estão em json v2 em [_./storage/postman_]().
+Modelos utilizados no PostMan (Collections) estão em json v2 em [_./storage/postman_](https://github.com/code-sample/laravel-jwt-auth/blob/master/storage/postman/Laravel-jwt-auth.postman_collection.json).
 
 ## Documentação oficial
 

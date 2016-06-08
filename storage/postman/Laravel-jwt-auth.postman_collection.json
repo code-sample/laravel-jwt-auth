@@ -1,0 +1,175 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Laravel-jwt-auth",
+		"_postman_id": "26401f4b-112a-7e53-e6d8-a986d28f3694",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cria Token do usuário",
+			"request": {
+				"url": "http://localhost:8000/api/auth",
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRF-TOKEN",
+						"value": "nKAqKzeYEJSaC0K2HILTSnAmy91N7Gz0no0XygGi",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "john.doe@domain.com",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "password",
+							"value": "teste123",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": [
+				{
+					"name": "user_token",
+					"originalRequest": {
+						"url": "http://localhost:8000/api/auth",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-CSRF-TOKEN",
+								"value": "nKAqKzeYEJSaC0K2HILTSnAmy91N7Gz0no0XygGi",
+								"type": "text",
+								"enabled": true,
+								"warning": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "evert.ramos@gmail.com",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "password",
+									"value": "master",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"header": [
+						{
+							"name": "Cache-Control",
+							"key": "Cache-Control",
+							"value": "no-cache",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "close",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Tue, 07 Jun 2016 23:29:23 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "Host",
+							"key": "Host",
+							"value": "localhost:8000",
+							"description": "Custom header"
+						},
+						{
+							"name": "X-Powered-By",
+							"key": "X-Powered-By",
+							"value": "PHP/5.6.3",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 364,
+					"body": "{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDAwXC9hcGlcL2F1dGgiLCJpYXQiOjE0NjUzNDIxNjMsImV4cCI6MTQ2NTM0NTc2MywibmJmIjoxNDY1MzQyMTYzLCJqdGkiOiJjMGFkYjk4MDJkMGRlZjg1YjA5NjY3MWQ0MDhmMDcxZCJ9.RrOVk90ONwG8hkJgwe8b_HMrg2vos__cYSiwynqKaPY\"}"
+				}
+			]
+		},
+		{
+			"name": "getUser",
+			"request": {
+				"url": "http://localhost:8000/getUser",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDAwXC9hcGlcL2F1dGgiLCJpYXQiOjE0NjUzNDIxNjMsImV4cCI6MTQ2NTM0NTc2MywibmJmIjoxNDY1MzQyMTYzLCJqdGkiOiJjMGFkYjk4MDJkMGRlZjg1YjA5NjY3MWQ0MDhmMDcxZCJ9.RrOVk90ONwG8hkJgwe8b_HMrg2vos__cYSiwynqKaPY}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": "        "
+			},
+			"response": []
+		},
+		{
+			"name": "get CSRF Token",
+			"request": {
+				"url": "localhost:8000/login",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Teste de rota autenticada",
+			"request": {
+				"url": "http://localhost:8000/api/user",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDAwXC9hcGlcL2F1dGgiLCJpYXQiOjE0NjUzNDIxNjMsImV4cCI6MTQ2NTM0NTc2MywibmJmIjoxNDY1MzQyMTYzLCJqdGkiOiJjMGFkYjk4MDJkMGRlZjg1YjA5NjY3MWQ0MDhmMDcxZCJ9.RrOVk90ONwG8hkJgwe8b_HMrg2vos__cYSiwynqKaPY}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
